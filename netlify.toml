@@ -1,6 +1,15 @@
 [build]
-  command = "npm run build"
-  publish = ".next"
+  command = "pnpm install && pnpm run build"
+  publish = ".next/static"
+
+[functions]
+  directory = ".next/server"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[context.production]
+  environment = { NODE_ENV = "production" }
+
+[context.deploy-preview]
+  environment = { NODE_ENV = "production" }
